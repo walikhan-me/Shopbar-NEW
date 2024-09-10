@@ -74,41 +74,26 @@
 		<div class="container-fluid">
 			<div class="row">
 				<!-- Single Banner  -->
+				@foreach($products as $product)
 				<div class="col-lg-4 col-md-6 col-12">
 					<div class="single-banner">
-						<img src="https://via.placeholder.com/600x370" alt="#">
+						<img src="{{ asset('images/'.$product->image_path) }}" alt="{{ $product->name }}">
 						<div class="content">
-							<p>Man's Collectons</p>
-							<h3>Summer travel <br> collection</h3>
-							<a href="#">Discover Now</a>
+							<h3 style="color:red;">{{ $product->name }}</h3>
+							<h3 style="color:red;">{{ $product->material }}</h3>
+							<p style="color:red;">{{ $product->category }}</p>
+							<h2 style="color:red;">{{ $product->price }} USD</h2>
+							<a href="{{ route('checkout', [ 'user_id' => session('id'),'product_id' => $product->id,'product_name' => $product->name, 'product_price' => $product->price]) }}" style="color:red; width:100px !important;">Shop Now</a>
 						</div>
 					</div>
 				</div>
-				<!-- /End Single Banner  -->
-				<!-- Single Banner  -->
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="single-banner">
-						<img src="https://via.placeholder.com/600x370" alt="#">
-						<div class="content">
-							<p>Bag Collectons</p>
-							<h3>Awesome Bag <br> 2020</h3>
-							<a href="#">Shop Now</a>
-						</div>
-					</div>
-				</div>
-				<!-- /End Single Banner  -->
-				<!-- Single Banner  -->
-				<div class="col-lg-4 col-12">
-					<div class="single-banner tab-height">
-						<img src="https://via.placeholder.com/600x370" alt="#">
-						<div class="content">
-							<p>Flash Sale</p>
-							<h3>Mid Season <br> Up to <span>40%</span> Off</h3>
-							<a href="#">Discover Now</a>
-						</div>
-					</div>
-				</div>
-				<!-- /End Single Banner  -->
+				
+				@endforeach
+				<!-- product id -->
+				<!-- prod_QiUxj7EijAY1Qz -->
+				<!-- app url -->
+				<!-- https://buy.stripe.com/test_cN229qb4wgbt6qI5kk -->
+			
 			</div>
 		</div>
 	</section>

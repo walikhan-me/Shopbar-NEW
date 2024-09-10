@@ -47,8 +47,9 @@
 
       <div class="input-box">
         <select id="role" name= 'userrole' >
-            <option value="admin">Admin</option>
-            <option value="user">Buyer</option>
+            <option value="1">Master Admin</option>
+            <option value="2">Admin</option>
+            <option value="3">Buyer</option>
         </select>
         @if ($errors->has('userrole'))
             <span class="text-danger">{{ $errors->first('userrole') }}</span>

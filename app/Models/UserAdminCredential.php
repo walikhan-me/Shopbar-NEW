@@ -25,4 +25,7 @@ class UserAdminCredential extends Model
     {
         $this->attributes['userpassword'] = Hash::make($value);
     }
+    public function order(){
+        return $this->hasMany(Order::class,'user_id','id');
+    }
 }

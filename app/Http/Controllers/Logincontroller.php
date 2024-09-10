@@ -42,7 +42,7 @@ class Logincontroller extends Controller
      
     
       if($user){
-         if($user['userrole']=='user'){
+         if($user['userrole']=='3'){
             $buyer = buyer::create([
                'username'=>$request->input('username'),
                'useremail'=>$request->input('useremail'),
@@ -72,9 +72,13 @@ class Logincontroller extends Controller
       Session::put('username',$user->username);
       Session::put('userrole',$user->userrole);
      
-      return $user->userrole === 'admin'
-      ? redirect()->route('Admin.Admin_dashboard')
-      : redirect()->route('User.User_dashboard');
+      if ($user->userrole === '1') {
+               return redirect()->route('Admin.Admin_dashboard');
+         } elseif ($user->userrole === '2') {
+               return redirect()->route('Admin.Admin_dashboard'); // Admin dashboard for role 2
+         } else {
+               return redirect()->route('User.User_dashboard');
+         }
     
             
       } else {
